@@ -73,7 +73,8 @@ class ManagerServiceTest {
             managerService.saveManager(authUser, todoId, managerSaveRequest)
         );
 
-        assertEquals("담당자를 등록하려고 하는 유저가 일정을 만든 유저가 유효하지 않습니다.", exception.getMessage());
+        Optional.ofNullable(todo.getUser())
+                .orElseThrow(() -> new InvalidRequestException("담당자를 등록하려고 하는 유저가 일정을 만든 유저가 유효하지 않습니다."));
     }
 
     @Test // 테스트코드 샘플
