@@ -46,7 +46,6 @@ public class AuthService {
         return new SignupResponse(bearerToken);
     }
 
-
     @Transactional(readOnly = true)
     public SigninResponse signin(SigninRequest signinRequest) {
         User user = userRepository.findByEmail(signinRequest.getEmail()).orElseThrow(
